@@ -57,7 +57,6 @@ const AdminDashboard = () => {
   async function callApi() {
     const { data, error } = await getAllOrders();
 
-    console.log(data);
     setOrders(data);
     setIsLoading(false);
   }

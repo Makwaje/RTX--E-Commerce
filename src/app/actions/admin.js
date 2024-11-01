@@ -79,7 +79,6 @@ export async function addProduct(formData) {
 
     if (insertError) throw insertError;
 
-    console.log("Data submitted successfully:", data);
     return data;
   } catch (error) {
     console.error("Error:", error.message);

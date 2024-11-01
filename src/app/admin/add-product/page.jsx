@@ -37,9 +37,7 @@ function AddProductForm() {
   } = useForm();
 
   async function submitProduct(formData) {
-    console.log(formData);
     const data = await addProduct(formData);
-    console.log(data);
 
     if (data) {
       toast({
@@ -60,7 +58,6 @@ function AddProductForm() {
   async function callApi() {
     const categories = await getCategories();
     setCategories(categories);
-    console.log(categories);
   }
 
   useEffect(function () {

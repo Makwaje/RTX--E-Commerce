@@ -1,11 +1,8 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Badge } from "@/components/ui/badge";
-import { Star, Truck, ShieldCheck } from "lucide-react";
-import Image from "next/image";
 import getProduct from "@/app/actions/products";
-import { addToCart } from "@/app/actions/cart";
+import { Badge } from "@/components/ui/badge";
+import { ShieldCheck, Truck } from "lucide-react";
+import Image from "next/image";
+
 import AddToCartButton from "@/components/AddToCart-Button";
 
 export default async function ProductDetailsPage({ params }) {
@@ -38,8 +35,6 @@ export default async function ProductDetailsPage({ params }) {
   };
 
   const data = await getProduct(slug);
-
-  console.log(data);
 
   return (
     <div className="container mx-auto px-4 py-8">
