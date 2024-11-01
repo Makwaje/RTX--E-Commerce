@@ -15,7 +15,9 @@ export async function getOrders() {
 
 export async function cancelOrder(id) {
   const supabase = await createClient();
-  const res = await supabase.from("orders").delete().eq("id", id).select("*");
+  const res = await supabase.from("orders").delete().eq("id", id);
 
-  return res;
+  const data = await getOrders();
+
+  return data;
 }
