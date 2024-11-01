@@ -21,6 +21,7 @@ import { useToast } from "@/hooks/use-toast";
 import { updatePassword } from "../actions/auth";
 import { cancelOrder, getOrders } from "../actions/orders";
 import { useRouter } from "next/navigation";
+import { Badge } from "@/components/ui/badge";
 
 export default function UserProfilePage() {
   const router = useRouter();
@@ -192,9 +193,19 @@ export default function UserProfilePage() {
                       <p className="font-medium">
                         ${order.total_price.toFixed(2)}
                       </p>
-                      <p className="text-sm text-muted-foreground">
+                      <Badge
+                        variant={
+                          order.status === "Approved"
+                            ? "success"
+                            : order.status === "canceled"
+                            ? "destructive"
+                            : order.status === "Delivered"
+                            ? "secondary"
+                            : "default"
+                        }
+                      >
                         {order.status}
-                      </p>
+                      </Badge>
                     </div>
                     <Button
                       variant="secondary"

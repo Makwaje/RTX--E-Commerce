@@ -38,6 +38,21 @@ export async function updateSession(request) {
   } = await supabase.auth.getUser();
 
   if (
+    user?.email === "admin@rtx.com" &&
+    !request.nextUrl.pathname.startsWith("/admin") &&
+    !request.nextUrl.pathname.startsWith("/checkout")
+  ) {
+    return NextResponse.redirect(new URL("/admin", request.url));
+  }
+
+  if (
+    user?.email !== "admin@rtx.com" &&
+    request.nextUrl.pathname.startsWith("/admin")
+  ) {
+    return NextResponse.redirect(new URL("/", request.url));
+  }
+
+  if (
     (!user && request.nextUrl.pathname === "/cart") ||
     (!user && request.nextUrl.pathname === "/profile")
   ) {

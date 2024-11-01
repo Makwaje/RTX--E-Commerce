@@ -6,7 +6,7 @@ export async function getCategories() {
   const supabase = await createClient();
   const { data: categories, error } = await supabase
     .from("categories")
-    .select("name");
+    .select("name, id");
 
   if (error) console.error(error);
   else {

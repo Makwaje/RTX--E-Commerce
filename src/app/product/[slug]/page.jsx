@@ -39,6 +39,8 @@ export default async function ProductDetailsPage({ params }) {
 
   const data = await getProduct(slug);
 
+  console.log(data);
+
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="grid md:grid-cols-2 gap-8">

@@ -1,8 +1,8 @@
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Search, ShoppingCart, User, Cog, LogOut } from "lucide-react";
+
+import { ShoppingCart, User, Cog, LogOut } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { logout } from "@/app/actions/auth";
 import SearchBar from "./SearchBar";
@@ -20,9 +20,9 @@ export default async function NavBar() {
           RTX
         </Link>
         <div className="flex items-center space-x-4">
-          <SearchBar />
-          {user && (
+          {user && user.email !== "admin@rtx.com" && (
             <>
+              <SearchBar />
               <Button variant="outline" size="icon" asChild>
                 <Link href="/cart">
                   <ShoppingCart className="h-4 w-4" />
